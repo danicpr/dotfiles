@@ -1,0 +1,64 @@
+# Nautilus open any terminal
+gtk-single-instance = false
+# Font
+font-family = JetBrains Mono Nerd Font
+font-size = 12
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Padding (mismo valor que en kitty, redondeado porque ghostty usa enteros)
+window-width = 100
+window-height = 30
+window-padding-x = 22
+window-padding-y = 22
+
+# No confirmar cierre
+confirm-close-surface = false
+
+# Zoom con teclado
+keybind = ctrl+plus=increase_font_size:1
+keybind = ctrl+equal=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
+keybind = ctrl+shift+minus=decrease_font_size:1
+keybind = ctrl+0=reset_font_size
+
+# --- Splits con teclas vim ---
+keybind = ctrl+shift+enter=new_split:right
+keybind = ctrl+shift+d=new_split:down
+keybind = ctrl+alt+w=close_surface
+
+keybind = ctrl+alt+h=goto_split:left
+keybind = ctrl+alt+j=goto_split:bottom
+keybind = ctrl+alt+k=goto_split:top
+keybind = ctrl+alt+l=goto_split:right
+
+keybind = ctrl+alt+z=toggle_split_zoom
+keybind = ctrl+alt+e=equalize_splits
+
+# Tema (Tokyo Night manual)
+cursor-color = #90a3bd
+foreground = c0caf5
+background = 1a1b26
+palette = 0=#15161e
+palette = 1=#f7768e
+palette = 2=#9ece6a
+palette = 3=#e0af68
+palette = 4=#7aa2f7
+palette = 5=#bb9af7
+palette = 6=#7dcfff
+palette = 7=#a9b1d6
+palette = 8=#414868
+palette = 9=#ff899d
+palette = 10=#9ece6a
+palette = 11=#e0af68
+palette = 12=#7aa2f7
+palette = 13=#bb9af7
+palette = 14=#7dcfff
+palette = 15=#c0caf5
+
+# custom-shader = shaders/cursor_warp.glsl
+custom-shader = shaders/sonic_boom_cursor.glsl
+custom-shader = shaders/cursor_smear.glsl
+custom-shader = shaders/bloom025.glsl
