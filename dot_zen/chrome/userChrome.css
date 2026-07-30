@@ -1,0 +1,71 @@
+/* Quitar estilos por defecto y ajustar tamaño */
+.titlebar-buttonbox .titlebar-button {
+  appearance: none !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 4px !important;
+}
+
+.titlebar-buttonbox .titlebar-button .toolbarbutton-icon {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* Estado inactivo (Backdrop) siempre oscuro */
+:-moz-window-inactive .titlebar-close .toolbarbutton-icon,
+:-moz-window-inactive .titlebar-min .toolbarbutton-icon,
+:-moz-window-inactive .titlebar-max .toolbarbutton-icon,
+:-moz-window-inactive .titlebar-restore .toolbarbutton-icon {
+  list-style-image: url("icons/backdrop-dark.svg") !important;
+}
+
+/* Estado normal */
+.titlebar-close .toolbarbutton-icon {
+  list-style-image: url("icons/close.svg") !important;
+}
+
+.titlebar-min .toolbarbutton-icon {
+  list-style-image: url("icons/minimize.svg") !important;
+}
+
+.titlebar-max .toolbarbutton-icon {
+  list-style-image: url("icons/maximize.svg") !important;
+}
+
+.titlebar-restore .toolbarbutton-icon {
+  list-style-image: url("icons/maximize.svg") !important;
+}
+
+/* Estado hover */
+.titlebar-close:hover .toolbarbutton-icon {
+  list-style-image: url("icons/close-hover.svg") !important;
+}
+
+.titlebar-min:hover .toolbarbutton-icon {
+  list-style-image: url("icons/minimize-hover.svg") !important;
+}
+
+.titlebar-max:hover .toolbarbutton-icon {
+  list-style-image: url("icons/maximize-hover.svg") !important;
+}
+
+.titlebar-restore:hover .toolbarbutton-icon {
+  list-style-image: url("icons/restore-hover.svg") !important;
+}
+
+/* Estado activo (Clic) siempre oscuro */
+.titlebar-close:active .toolbarbutton-icon {
+  list-style-image: url("icons/close-active-dark.svg") !important;
+}
+
+.titlebar-min:active .toolbarbutton-icon {
+  list-style-image: url("icons/minimize-active-dark.svg") !important;
+}
+
+.titlebar-max:active .toolbarbutton-icon {
+  list-style-image: url("icons/maximize-active-dark.svg") !important;
+}
+
+.titlebar-restore:active .toolbarbutton-icon {
+  list-style-image: url("icons/restore-active-dark.svg") !important;
+}
