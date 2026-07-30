@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+dconf load /org/gnome/shell/ < {{ .chezmoi.sourceDir }}/dconf/gnome-shell.ini
+dconf load /org/gnome/desktop/interface/ < {{ .chezmoi.sourceDir }}/dconf/gnome-interface.ini
+dconf load /org/gnome/desktop/wm/ < {{ .chezmoi.sourceDir }}/dconf/gnome-wm.ini
+dconf load /org/gnome/mutter/ < {{ .chezmoi.sourceDir }}/dconf/gnome-mutter.ini
