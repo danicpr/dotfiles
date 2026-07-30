@@ -1,26 +1,32 @@
 #!/bin/bash
 set -e
 
-PROFILES_INI="$HOME/.zen/profiles.ini"
+INSTALLS_INI="$HOME/.config/zen/installs.ini"
+PROFILES_INI="$HOME/.config/zen/profiles.ini"
 
-if [ ! -f "$PROFILES_INI" ]; then
-    echo "Zen aún no ha generado profiles.ini, salta este paso"
-    exit 0
+# Resuelve el directorio del perfil por defecto
+# Prioridad 1: installs.ini (Default=<profile_dir>)
+# Prioridad 2: fallback a profiles.ini (Profile con Default=1)
+PROFILE_PATH=
+if [ -f "$INSTALLS_INI" ]; then
+    PROFILE_PATH=$(awk -F= '/^Default=/{print $2; exit}' "$INSTALLS_INI")
 fi
 
-# Extrae el path del primer perfil "Default=1"
-PROFILE_PATH=$(awk -F= '/^Path=/{p=$2} /Default=1/{print p; exit}' "$PROFILES_INI")
+if [ -z "$PROFILE_PATH" ] && [ -f "$PROFILES_INI" ]; then
+    PROFILE_PATH=$(awk -F= '/^Path=/{p=$2} /Default=1/{print p; exit}' "$PROFILES_INI")
+fi
 
 if [ -z "$PROFILE_PATH" ]; then
-    echo "No se encontró perfil default"
+    echo "No se encontró perfil default en Zen"
     exit 0
 fi
 
-TARGET_DIR="$HOME/.zen/$PROFILE_PATH"
+TARGET_DIR="$HOME/.config/zen/$PROFILE_PATH"
 
 mkdir -p "$TARGET_DIR"
 
+# Copia las dotfiles desde ~/.zenconfig/ al perfil activo de Zen
 # Activa dotglob temporalmente para incluir archivos que empiecen con punto
 shopt -s dotglob
-cp -rf "{{ .chezmoi.sourceDir }}/.zen/"* "$TARGET_DIR/"
+cp -rf "$HOME/.zenconfig/"* "$TARGET_DIR/"
 shopt -u dotglob
