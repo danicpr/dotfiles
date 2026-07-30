@@ -1,0 +1,93 @@
+{
+  "proxy": "",
+  "code_lens": "on",
+  "format_on_save": "on",
+  "which_key": {
+    "enabled": true,
+  },
+  "agent_servers": {
+    "OMP": {
+      "favorite_config_option_values": {
+        "model": [
+          "google-antigravity/gemini-3.6-flash",
+          "deepseek/deepseek-v4-flash",
+          "deepseek/deepseek-v4-pro",
+          "google-antigravity/claude-opus-4-6"
+        ]
+      },
+      "default_config_options": {
+        "mode": "default",
+        "thinking": "high",
+        "model": "google-antigravity/gemini-3.6-flash-high",
+      },
+      "type": "custom",
+      "command": "omp",
+      "args": ["acp"],
+      "env": {},
+    },
+  },
+  "icon_theme": "Warm Charmed Icons",
+  "cli_default_open_behavior": "existing_window",
+  "use_system_window_tabs": false,
+  "window_decorations": "server",
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "agent": {
+    "show_turn_stats": true,
+    "sandbox_permissions": {
+      "allow_unsandboxed": true,
+    },
+    "profiles": {},
+    "tool_permissions": {
+      "tools": {
+        "create_directory": {
+          "default": "allow",
+        },
+        "write_file": {
+          "default": "allow",
+        },
+        "edit_file": {
+          "default": "allow",
+        },
+      },
+    },
+    "dock": "right",
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "on_last_window_closed": "quit_app",
+  "edit_predictions": {
+    "provider": "zed",
+  },
+  "vim": {
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true,
+  },
+  "disable_ai": false,
+  "terminal": {
+    "font_weight": 450.0,
+    "line_height": { "custom": 1.39 },
+    "font_size": 14.0,
+    "font_family": "JetBrainsMono Nerd Font",
+  },
+  "session": {
+    "trust_all_worktrees": true,
+    "restore_unsaved_buffers": true,
+  },
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Zedokai Darker (Filter Octagon)",
+  },
+}

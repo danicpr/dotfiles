@@ -1,0 +1,33 @@
+source ~/.config/zsh/my-cachy-config.zsh
+export LS_COLORS="di=1;36:ln=1;35:so=32:pi=33:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+
+eval "$(zoxide init zsh --cmd cd)"
+
+# Cargar módulo de Fastfetch GIF Manager
+source ~/.ff_functions.zsh
+
+#Aliases
+alias zi='__zoxide_zi'
+alias snvim='sudo -E nvim'
+alias mirrors="sudo reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
+alias mvn-new='mvn archetype:generate -DgroupId=com.default.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.5 -DinteractiveMode=false'
+alias sun='sudo tailscale up && sunshine'
+
+
+source ~/.secrets/api_keys.zsh
+
+
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# fnm
+FNM_PATH="/home/dev/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
+
+if [[ "$TERMINAL_EXE" == *"kitty"* ]] || [[ "$TERM" == "xterm-kitty" ]] || [[ "$TERM" == *"ghostty"* ]]; then
+    ff
+fi
+

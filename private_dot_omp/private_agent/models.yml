@@ -1,0 +1,28 @@
+providers:
+  openrouter-mimo:
+    baseUrl: https://openrouter.ai/api/v1
+    apiKey: OPENROUTER_API_KEY
+    api: openai-completions
+    models:
+      - id: xiaomi/mimo-v2.5
+        name: MiMo-V2.5
+        reasoning: true
+        input: [text, image]
+        cost:
+          input: 0.105
+          output: 0.28
+          cacheRead: 0.0028
+          cacheWrite: 0
+        contextWindow: 1048576
+        maxTokens: 131072
+      - id: xiaomi/mimo-v2.5-pro
+        name: MiMo-V2.5-Pro
+        reasoning: true
+        input: [text]
+        cost:
+          input: 0.435
+          output: 0.87
+          cacheRead: 0.0036
+          cacheWrite: 0
+        contextWindow: 1048576
+        maxTokens: 131072

@@ -1,0 +1,69 @@
+symbolPreset: nerd
+theme: 
+  dark: titanium
+  light: light
+setupVersion: 1
+debug: 
+  enabled: false
+inspect_image: 
+  enabled: true
+browser: 
+  enabled: false
+tools: 
+  approvalMode: yolo
+  approval: 
+    bash: allow
+magicKeywords: 
+  enabled: false
+  ultrathink: false
+  orchestrate: false
+  workflow: false
+autoResume: true
+defaultThinkingLevel: auto
+includeModelInPrompt: true
+personality: none
+retry: 
+  modelFallback: false
+statusLine: 
+  separator: slash
+  preset: default
+  sessionAccent: true
+  transparent: false
+  showHookStatus: true
+tui: 
+  textSizing: true
+  tight: false
+display: 
+  showTokenUsage: true
+task: 
+  showResolvedModelBadge: true
+  eager: default
+python: 
+  kernelMode: session
+plan: 
+  defaultOnStartup: true
+commands: 
+  enableClaudeUser: false
+  enableClaudeProject: false
+  enableOpencodeUser: false
+  enableOpencodeProject: false
+providers: 
+  tinyModel: lfm2-700m
+  tinyModelDevice: gpu
+  openrouterVariant: floor
+provider: 
+  appendOnlyContext: auto
+modelRoles: 
+  smol: deepseek/deepseek-v4-flash
+  plan: openrouter/moonshotai/kimi-k3
+  default: deepseek/deepseek-v4-flash
+  vision: google-antigravity/gemini-3.6-flash
+  tiny: deepseek/deepseek-v4-flash:off
+  slow: google-antigravity/gemini-3.6-flash
+github: 
+  cache: 
+    enabled: false
+temperature: 0.5
+disabledProviders: 
+  - opencode-go
+  - opencode-zen

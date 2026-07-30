@@ -1,0 +1,24 @@
+yoshi.gif
+W=18 H=20 PR=4
+morshu.gif
+W=35 H=15 PT=1 PR=2
+babyyayo.gif
+W=25 H=15
+arch-i-use-arch-btw.gif
+PT=2 PR=4
+goose-dance.gif
+W=20 H=20
+Twerkduck.gif
+PR=4
+club-penguin.gif
+PT=1 PR=3
+penguintrapero.gif
+PR=5 PT=1
+linuxpat.gif
+PR=4
+CachyOS_Logo.png
+W=30 H=15 PR=3
+apple.png
+H=12 W=20 PR=3  PT=1
+apple_rainbow.png
+H=12 W=20 PR=3  PT=1

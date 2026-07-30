@@ -1,0 +1,7 @@
+[user]
+	name = Daniel Borre
+	email = {{ .email}}
+[core]
+  excludesfile = ~/.config/git/ignore
+[init]
+	defaultBranch = main

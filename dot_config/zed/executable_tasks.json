@@ -1,0 +1,15 @@
+[
+  {
+    "label": "Silicon: Capture Selection.",
+    "command": "printenv ZED_SELECTED_TEXT | silicon --to-clipboard -l \"$(printenv ZED_LANGUAGE | sed 's/JSONC/json/;s/Shell Script/sh/;s/Zsh/sh/')\"",
+    "use_new_terminal": false,
+    "reveal": "never",
+  },
+  {
+    "label": "Silicon: Capture File",
+    "command": "silicon --to-clipboard \"$ZED_FILE\"",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": true,
+    "reveal": "never",
+  },
+]
