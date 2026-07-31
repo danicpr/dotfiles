@@ -1,0 +1,54 @@
+#!/bin/bash
+set -euo pipefail
+
+INSTALLS_INI="${HOME:?}/.config/zen/installs.ini"
+PROFILES_INI="${HOME:?}/.config/zen/profiles.ini"
+SOURCE_DIR="${HOME:?}/.zenconfig"
+
+if ! command -v rsync >/dev/null 2>&1; then
+    echo "rsync es necesario para sincronizar el perfil de Zen" >&2
+    exit 1
+fi
+
+# Resuelve el directorio del perfil por defecto.
+# Prioridad 1: installs.ini (Default=<profile_dir>).
+# Prioridad 2: fallback a profiles.ini (Profile con Default=1).
+PROFILE_PATH=""
+if [[ -f "$INSTALLS_INI" ]]; then
+    PROFILE_PATH=$(awk -F= '/^Default=/{print $2; exit}' "$INSTALLS_INI")
+fi
+
+if [[ -z "$PROFILE_PATH" && -f "$PROFILES_INI" ]]; then
+    PROFILE_PATH=$(awk -F= '/^Path=/{path=$2} /^Default=1$/{print path; exit}' "$PROFILES_INI")
+fi
+
+if [[ -z "$PROFILE_PATH" ]]; then
+    echo "No se encontró perfil default en Zen" >&2
+    exit 1
+fi
+
+if [[ "$PROFILE_PATH" == /* ]]; then
+    TARGET_DIR="$PROFILE_PATH"
+else
+    TARGET_DIR="$HOME/.config/zen/$PROFILE_PATH"
+fi
+
+if [[ ! -d "$SOURCE_DIR" ]]; then
+    echo "No existe el source de configuración de Zen: $SOURCE_DIR" >&2
+    exit 1
+fi
+for target in user.js zen-themes.json; do
+    if [[ ! -f "$SOURCE_DIR/$target" ]]; then
+        echo "Falta el target gestionado de Zen: $SOURCE_DIR/$target" >&2
+        exit 1
+    fi
+done
+if [[ ! -d "$SOURCE_DIR/chrome" ]]; then
+    echo "Falta el directorio chrome gestionado de Zen: $SOURCE_DIR/chrome" >&2
+    exit 1
+fi
+
+mkdir -p "$TARGET_DIR"
+cp -p -- "$SOURCE_DIR/user.js" "$TARGET_DIR/user.js"
+cp -p -- "$SOURCE_DIR/zen-themes.json" "$TARGET_DIR/zen-themes.json"
+rsync -a --delete -- "$SOURCE_DIR/chrome/" "$TARGET_DIR/chrome/"

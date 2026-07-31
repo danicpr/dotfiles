@@ -1,0 +1,16 @@
+#!/bin/bash
+set -euo pipefail
+
+if ! command -v dconf >/dev/null 2>&1; then
+    echo "dconf no está instalado" >&2
+    exit 1
+fi
+if [[ -z "${DBUS_SESSION_BUS_ADDRESS:-}" ]]; then
+    echo "DBUS_SESSION_BUS_ADDRESS no está definido; abre una sesión GNOME" >&2
+    exit 1
+fi
+
+dconf load /org/gnome/shell/ < {{ joinPath .chezmoi.sourceDir "dconf/gnome-shell.ini" | quote }}
+dconf load /org/gnome/desktop/interface/ < {{ joinPath .chezmoi.sourceDir "dconf/gnome-interface.ini" | quote }}
+dconf load /org/gnome/desktop/wm/ < {{ joinPath .chezmoi.sourceDir "dconf/gnome-wm.ini" | quote }}
+dconf load /org/gnome/mutter/ < {{ joinPath .chezmoi.sourceDir "dconf/gnome-mutter.ini" | quote }}

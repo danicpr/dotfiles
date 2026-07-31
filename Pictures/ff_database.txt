@@ -16,9 +16,5 @@ penguintrapero.gif
 PR=5 PT=1
 linuxpat.gif
 PR=4
-CachyOS_Logo.png
-W=30 H=15 PR=3
-apple.png
-H=12 W=20 PR=3  PT=1
 apple_rainbow.png
 H=12 W=20 PR=3  PT=1

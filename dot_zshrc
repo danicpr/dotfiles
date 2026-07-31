@@ -14,17 +14,17 @@ alias mvn-new='mvn archetype:generate -DgroupId=com.default.app -DartifactId=my-
 alias sun='sudo tailscale up && sunshine'
 
 
-source ~/.secrets/api_keys.zsh
+[[ -r "$HOME/.secrets/api_keys.zsh" ]] && source "$HOME/.secrets/api_keys.zsh"
 
 
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # fnm
-FNM_PATH="$HOME/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
+FNM_PATH="$HOME/.cargo/bin"
+if [[ -x "$FNM_PATH/fnm" ]]; then
   export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
+  eval "$FNM_PATH/fnm env"
 fi
 
 if [[ "$TERMINAL_EXE" == *"kitty"* ]] || [[ "$TERM" == "xterm-kitty" ]] || [[ "$TERM" == *"ghostty"* ]]; then
