@@ -5,4 +5,4 @@
 [init]
 	defaultBranch = main
 [credential]
-	helper = libsecret
+	helper = store

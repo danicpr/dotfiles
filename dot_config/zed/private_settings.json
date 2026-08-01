@@ -65,7 +65,7 @@
   },
   "on_last_window_closed": "quit_app",
   "edit_predictions": {
-    "provider": "zed",
+    "provider": "copilot",
   },
   "vim": {
     "use_smartcase_find": true,
