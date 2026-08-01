@@ -13,6 +13,9 @@ alias mirrors="sudo reflector --latest 10 --protocol https --sort rate --save /e
 alias mvn-new='mvn archetype:generate -DgroupId=com.default.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.5 -DinteractiveMode=false'
 alias sun='sudo tailscale up && sunshine'
 
+omp() {
+    clear && command omp "$@"
+}
 
 [[ -r "$HOME/.secrets/api_keys.zsh" ]] && source "$HOME/.secrets/api_keys.zsh"
 
