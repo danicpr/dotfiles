@@ -12,5 +12,6 @@ fi
 
 dconf load /org/gnome/shell/ < {{ joinPath .chezmoi.sourceDir "dconf/gnome-shell.ini" | quote }}
 dconf load /org/gnome/desktop/interface/ < {{ joinPath .chezmoi.sourceDir "dconf/gnome-interface.ini" | quote }}
+dconf load /org/gnome/settings-daemon/plugins/media-keys/ < {{ joinPath .chezmoi.sourceDir "dconf/gnome-media-keys.ini" | quote }}
 dconf load /org/gnome/desktop/wm/ < {{ joinPath .chezmoi.sourceDir "dconf/gnome-wm.ini" | quote }}
 dconf load /org/gnome/mutter/ < {{ joinPath .chezmoi.sourceDir "dconf/gnome-mutter.ini" | quote }}
