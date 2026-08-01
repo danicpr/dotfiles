@@ -46,7 +46,7 @@ export LESS_TERMCAP_me="$(tput sgr0 2> /dev/null)"
 # Make new shells get the history lines from all previous
 # shells instead of the default "last window closed" history.
 
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+setopt inc_append_history
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -70,7 +70,9 @@ alias please="sudo"
 alias tb="nc termbin.com 9999"
 
 # Cleanup orphaned packages
-alias cleanup="sudo pacman -Rsn $(pacman -Qtdq)"
+cleanup() {
+  sudo pacman -Rsn $(pacman -Qtdq)
+}
 
 # Get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"

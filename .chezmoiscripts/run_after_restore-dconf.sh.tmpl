@@ -10,7 +10,7 @@ if [[ -z "${DBUS_SESSION_BUS_ADDRESS:-}" ]]; then
     exit 1
 fi
 
-dconf load /org/gnome/shell/ < {{ joinPath .chezmoi.sourceDir "dconf/gnome-shell.ini" | quote }}
+sed "s|/home/dev|${HOME}|g" {{ joinPath .chezmoi.sourceDir "dconf/gnome-shell.ini" | quote }} | dconf load /org/gnome/shell/
 dconf load /org/gnome/desktop/interface/ < {{ joinPath .chezmoi.sourceDir "dconf/gnome-interface.ini" | quote }}
 dconf load /org/gnome/settings-daemon/plugins/media-keys/ < {{ joinPath .chezmoi.sourceDir "dconf/gnome-media-keys.ini" | quote }}
 dconf load /org/gnome/desktop/wm/ < {{ joinPath .chezmoi.sourceDir "dconf/gnome-wm.ini" | quote }}

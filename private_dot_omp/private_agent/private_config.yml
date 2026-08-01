@@ -38,6 +38,7 @@ display:
 task: 
   showResolvedModelBadge: true
   eager: default
+  maxEffort: xhigh
 python: 
   kernelMode: session
 plan: 
@@ -51,10 +52,13 @@ providers:
   tinyModel: lfm2-700m
   tinyModelDevice: gpu
   openrouterVariant: floor
+  webSearchGeminiModel: gemini-3.6-flash
+  imageOrder: 
+    - antigravity
 provider: 
   appendOnlyContext: auto
 modelRoles: 
-  smol: openrouter/openai/gpt-5.6-luna
+  smol: deepseek/deepseek-v4-flash
   vision: google-antigravity/gemini-3.6-flash
   tiny: deepseek/deepseek-v4-flash:off
   slow: google-antigravity/gemini-3.6-flash
@@ -67,3 +71,8 @@ temperature: 0.5
 disabledProviders: 
   - opencode-go
   - opencode-zen
+startup: 
+  quiet: true
+read: 
+  renderMarkdown: true
+textVerbosity: medium

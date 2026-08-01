@@ -1,0 +1,5 @@
+.config/zed/keymap_backup.json
+.config/nvim/LICENSE
+.config/nvim/README.md
+.config/nvim/lua/plugins/example.lua
+.config/nvim/.gitignore

@@ -83,7 +83,7 @@
         },
       ],
       // Atajo para TODO EL ARCHIVO (ej: Ctrl + Alt + a)
-      "ctrl-s": [
+      "ctrl-alt-a": [
         "task::Spawn",
         {
           "task_name": "Silicon: Capture File"
