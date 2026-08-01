@@ -28,6 +28,7 @@ if [[ -x "$FNM_PATH/fnm" ]]; then
 fi
 
 if [[ "$TERMINAL_EXE" == *"kitty"* ]] || [[ "$TERM" == "xterm-kitty" ]] || [[ "$TERM" == *"ghostty"* ]]; then
+    sleep 0.2
     ff
 fi
 

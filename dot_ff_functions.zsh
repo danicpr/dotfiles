@@ -124,7 +124,7 @@ ff() {
     fi
 
     if [[ "$term" == "ghostty" ]]; then
-        logo_type="kitty-direct"
+        logo_type="kitty"
     else
         logo_type="kitty-icat"
     fi
