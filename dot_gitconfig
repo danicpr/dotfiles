@@ -1,8 +1,0 @@
-[user]
-	name = Daniel Borre
-	email = danisecundarioxd@gmail.com
-[core]
-[init]
-	defaultBranch = main
-[credential]
-	helper = store

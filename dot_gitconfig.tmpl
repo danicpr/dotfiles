@@ -1,0 +1,10 @@
+{{ if and (env "GIT_NAME") (env "GIT_EMAIL") -}}
+[user]
+	name = {{ env "GIT_NAME" }}
+	email = {{ env "GIT_EMAIL" }}
+{{- end }}
+[core]
+[init]
+	defaultBranch = main
+[credential]
+	helper = store
