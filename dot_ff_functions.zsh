@@ -129,14 +129,14 @@ ff() {
         logo_type="kitty-icat"
     fi
     if ! sed -i -E \
-        -e "s|\"type\"[[:space:]]*:[[:space:]]*\"[^\"]*\"|\"type\": \"$logo_type\"|" \
-        -e "s|\"source\"[[:space:]]*:[[:space:]]*\"[^\"]*\"|\"source\": \"$target_media\"|" \
-        -e "s|\"width\"[[:space:]]*:[[:space:]]*[0-9]+|\"width\": $FF_W|" \
-        -e "s|\"height\"[[:space:]]*:[[:space:]]*[0-9]+|\"height\": $FF_H|" \
-        -e "s|\"top\"[[:space:]]*:[[:space:]]*[0-9]+|\"top\": $FF_PT|" \
-        -e "s|\"right\"[[:space:]]*:[[:space:]]*[0-9]+|\"right\": $FF_PR|" \
-        -e "s|\"bottom\"[[:space:]]*:[[:space:]]*[0-9]+|\"bottom\": $FF_PB|" \
-        -e "s|\"left\"[[:space:]]*:[[:space:]]*[0-9]+|\"left\": $FF_PL|" \
+        -e "0,/\"type\"[[:space:]]*:[[:space:]]*\"[^\"]*\"/s|\"type\"[[:space:]]*:[[:space:]]*\"[^\"]*\"|\"type\": \"$logo_type\"|" \
+        -e "0,/\"source\"[[:space:]]*:[[:space:]]*\"[^\"]*\"/s|\"source\"[[:space:]]*:[[:space:]]*\"[^\"]*\"|\"source\": \"$target_media\"|" \
+        -e "0,/\"width\"[[:space:]]*:[[:space:]]*[0-9]+/s|\"width\"[[:space:]]*:[[:space:]]*[0-9]+|\"width\": $FF_W|" \
+        -e "0,/\"height\"[[:space:]]*:[[:space:]]*[0-9]+/s|\"height\"[[:space:]]*:[[:space:]]*[0-9]+|\"height\": $FF_H|" \
+        -e "0,/\"top\"[[:space:]]*:[[:space:]]*[0-9]+/s|\"top\"[[:space:]]*:[[:space:]]*[0-9]+|\"top\": $FF_PT|" \
+        -e "0,/\"right\"[[:space:]]*:[[:space:]]*[0-9]+/s|\"right\"[[:space:]]*:[[:space:]]*[0-9]+|\"right\": $FF_PR|" \
+        -e "0,/\"bottom\"[[:space:]]*:[[:space:]]*[0-9]+/s|\"bottom\"[[:space:]]*:[[:space:]]*[0-9]+|\"bottom\": $FF_PB|" \
+        -e "0,/\"left\"[[:space:]]*:[[:space:]]*[0-9]+/s|\"left\"[[:space:]]*:[[:space:]]*[0-9]+|\"left\": $FF_PL|" \
         "$temp_config"; then
         rm -f -- "$temp_config"
         trap - EXIT
