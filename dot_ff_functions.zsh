@@ -115,7 +115,7 @@ ff() {
         echo "Error: no existe $_FF_CONFIG" >&2
         return 1
     fi
-    temp_config=$(mktemp "${TMPDIR:-/tmp}/fastfetch-config.XXXXXX") || return 1
+    temp_config=$(mktemp "${TMPDIR:-/tmp}/fastfetch-config.XXXXXX.jsonc") || return 1
     trap 'rm -f -- "$temp_config"' EXIT
     if ! cp -- "$_FF_CONFIG" "$temp_config"; then
         rm -f -- "$temp_config"

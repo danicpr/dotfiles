@@ -24,7 +24,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 FNM_PATH="$HOME/.cargo/bin"
 if [[ -x "$FNM_PATH/fnm" ]]; then
   export PATH="$FNM_PATH:$PATH"
-  eval "$FNM_PATH/fnm env"
+  eval "$("$FNM_PATH/fnm" env)"
 fi
 
 if [[ "$TERMINAL_EXE" == *"kitty"* ]] || [[ "$TERM" == "xterm-kitty" ]] || [[ "$TERM" == *"ghostty"* ]]; then
