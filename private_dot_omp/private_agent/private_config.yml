@@ -63,8 +63,8 @@ modelRoles:
   vision: google-antigravity/gemini-3.6-flash
   tiny: deepseek/deepseek-v4-flash:off
   slow: google-antigravity/gemini-3.6-flash
-  default: openrouter/openai/gpt-5.6-luna
-  plan: openrouter/openai/gpt-5.6-luna
+  default: deepseek/deepseek-v4-flash
+  plan: deepseek/deepseek-v4-flash
 github: 
   cache: 
     enabled: false
