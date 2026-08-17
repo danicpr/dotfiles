@@ -1,7 +1,7 @@
 {
   "proxy": "",
   "code_lens": "on",
-  "format_on_save": "on",
+  "format_on_save": "off",
   "which_key": {
     "enabled": true,
   },
@@ -9,16 +9,16 @@
     "OMP": {
       "favorite_config_option_values": {
         "model": [
-          "google-antigravity/gemini-3.6-flash",
           "deepseek/deepseek-v4-flash",
           "deepseek/deepseek-v4-pro",
-          "google-antigravity/claude-opus-4-6"
+          "google-antigravity/claude-opus-4-6",
+          "google-antigravity/gemini-3.7-flash-tiered"
         ]
       },
       "default_config_options": {
         "mode": "default",
-        "thinking": "high",
-        "model": "google-antigravity/gemini-3.6-flash-high",
+        "thinking": "auto",
+        "model": "google-antigravity/gemini-3.7-flash-tiered",
       },
       "type": "custom",
       "command": "omp",
@@ -65,6 +65,10 @@
   },
   "on_last_window_closed": "quit_app",
   "edit_predictions": {
+    "copilot": {
+      "enable_next_edit_suggestions": true
+    },
+    "mode": "subtle",
     "provider": "copilot",
   },
   "vim": {
