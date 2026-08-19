@@ -1,0 +1,21 @@
+{{- $name := "" -}}
+{{- if env "GIT_NAME" -}}
+{{-   $name = env "GIT_NAME" -}}
+{{- else if hasKey . "name" -}}
+{{-   $name = .name -}}
+{{- else -}}
+{{-   $name = promptStringOnce . "name" "Nombre para Git (user.name)" -}}
+{{- end -}}
+
+{{- $email := "" -}}
+{{- if env "GIT_EMAIL" -}}
+{{-   $email = env "GIT_EMAIL" -}}
+{{- else if hasKey . "email" -}}
+{{-   $email = .email -}}
+{{- else -}}
+{{-   $email = promptStringOnce . "email" "Correo para Git (user.email)" -}}
+{{- end -}}
+
+[data]
+    name = {{ $name | quote }}
+    email = {{ $email | quote }}

@@ -1,7 +1,9 @@
-{{ if and (env "GIT_NAME") (env "GIT_EMAIL") -}}
+{{- $name := (get . "name") | default (env "GIT_NAME") -}}
+{{- $email := (get . "email") | default (env "GIT_EMAIL") -}}
+{{ if and $name $email -}}
 [user]
-	name = {{ env "GIT_NAME" }}
-	email = {{ env "GIT_EMAIL" }}
+	name = {{ $name }}
+	email = {{ $email }}
 {{- end }}
 [core]
 [init]
