@@ -1,0 +1,9 @@
+{
+  "toggles": {
+    "sysmon": {
+      "btop": {
+        "command": ["ghostty", "--class=btop", "--title=btop", "-e", "btop"]
+      }
+    }
+  }
+}
