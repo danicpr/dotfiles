@@ -26,7 +26,7 @@
       "env": {},
     },
   },
-  "icon_theme": "Warm Charmed Icons",
+  "icon_theme": "Light Charmed Icons",
   "cli_default_open_behavior": "existing_window",
   "use_system_window_tabs": false,
   "window_decorations": "server",
