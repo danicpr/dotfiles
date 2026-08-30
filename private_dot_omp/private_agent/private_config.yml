@@ -63,7 +63,7 @@ modelRoles:
   vision: google-antigravity/gemini-3.7-flash
   tiny: deepseek/deepseek-v4-flash:off
   slow: google-antigravity/gemini-3.7-flash
-  default: deepseek/deepseek-v4-flash
+  default: google-antigravity/gemini-3.7-flash
   plan: deepseek/deepseek-v4-flash
 github:
   cache:
