@@ -4,3 +4,8 @@ hl.config({
         kb_variant = "altgr-intl",
     },
 })
+
+hl.window_rule({
+    match = { class = "io.missioncenter.MissionCenter" },
+    workspace = "special:sysmon",
+})

@@ -2,7 +2,16 @@
   "toggles": {
     "sysmon": {
       "btop": {
-        "command": ["ghostty", "--class=btop", "--title=btop", "-e", "btop"]
+        "enable": false
+      },
+      "missioncenter": {
+        "enable": true,
+        "match": [
+          { "class": "io.missioncenter.MissionCenter" },
+          { "class": "missioncenter" }
+        ],
+        "command": ["missioncenter"],
+        "move": true
       }
     }
   }
