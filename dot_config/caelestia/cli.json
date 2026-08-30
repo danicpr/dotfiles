@@ -1,4 +1,7 @@
 {
+  "theme": {
+    "iconTheme": "MacTahoe-dark"
+  },
   "toggles": {
     "sysmon": {
       "btop": {
