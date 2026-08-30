@@ -1,19 +1,19 @@
 symbolPreset: nerd
-theme: 
+theme:
   dark: titanium
   light: light
-setupVersion: 1
-debug: 
+setupVersion: 2
+debug:
   enabled: false
-inspect_image: 
+inspect_image:
   mode: "on"
-browser: 
+browser:
   enabled: false
-tools: 
+tools:
   approvalMode: yolo
-  approval: 
+  approval:
     bash: allow
-magicKeywords: 
+magicKeywords:
   enabled: false
   ultrathink: false
   orchestrate: false
@@ -22,58 +22,61 @@ autoResume: true
 defaultThinkingLevel: auto
 includeModelInPrompt: true
 personality: none
-retry: 
+retry:
   modelFallback: false
-statusLine: 
+statusLine:
   separator: slash
   preset: default
   sessionAccent: true
   transparent: false
   showHookStatus: true
-tui: 
+tui:
   textSizing: true
   tight: false
-display: 
+display:
   showTokenUsage: true
-task: 
+task:
   showResolvedModelBadge: true
   eager: default
   maxEffort: xhigh
   enableEffort: true
-python: 
+python:
   kernelMode: session
-plan: 
+plan:
   defaultOnStartup: false
-commands: 
+commands:
   enableClaudeUser: false
   enableClaudeProject: false
   enableOpencodeUser: false
   enableOpencodeProject: false
-providers: 
+providers:
   tinyModel: lfm2-700m
   tinyModelDevice: gpu
   openrouterVariant: floor
-  webSearchGeminiModel: gemini-3.6-flash
-  imageOrder: 
+  webSearchGeminiModel: gemini-3.7-flash
+  imageOrder:
     - antigravity
-provider: 
+provider:
   appendOnlyContext: auto
-modelRoles: 
+modelRoles:
   smol: deepseek/deepseek-v4-flash
-  vision: google-antigravity/gemini-3.6-flash
+  vision: google-antigravity/gemini-3.7-flash
   tiny: deepseek/deepseek-v4-flash:off
-  slow: google-antigravity/gemini-3.6-flash
+  slow: google-antigravity/gemini-3.7-flash
   default: deepseek/deepseek-v4-flash
   plan: deepseek/deepseek-v4-flash
-github: 
-  cache: 
+github:
+  cache:
     enabled: false
 temperature: 0.5
-disabledProviders: 
+disabledProviders:
   - opencode-go
   - opencode-zen
-startup: 
+startup:
   quiet: true
-read: 
+read:
   renderMarkdown: true
 textVerbosity: medium
+composer:
+  shape: band
+hideThinkingBlock: true
