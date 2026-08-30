@@ -1,0 +1,7 @@
+{{- $name := (get . "name") | default (env "GIT_NAME") | default "Daniel Borre" -}}
+{{- if eq $name "Daniel Borre" }}
+Host github-vibe
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_github_vibe
+{{- end }}

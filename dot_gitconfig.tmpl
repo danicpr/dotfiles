@@ -10,3 +10,14 @@
 	defaultBranch = main
 [credential]
 	helper = store
+{{- if eq $name "Daniel Borre" }}
+
+[includeIf "gitdir:~/vibe/"]
+	path = ~/.gitconfig-vibe
+
+[includeIf "gitdir:~/ansible/"]
+	path = ~/.gitconfig-vibe
+
+[includeIf "gitdir:~/.local/share/chezmoi/"]
+	path = ~/.gitconfig-vibe
+{{- end }}

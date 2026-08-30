@@ -1,0 +1,9 @@
+{{- $name := (get . "name") | default (env "GIT_NAME") | default "Daniel Borre" -}}
+{{- if eq $name "Daniel Borre" -}}
+[user]
+	name = Daniel Borre
+	email = danisecundarioxd@gmail.com
+
+[url "git@github-vibe:"]
+	insteadOf = git@github.com:
+{{ end -}}
