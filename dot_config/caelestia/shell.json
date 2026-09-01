@@ -1,4 +1,9 @@
 {
+    "appearance": {
+        "transparency": {
+            "enabled": true
+        }
+    },
     "general": {
         "apps": {
             "playback": [
