@@ -65,7 +65,7 @@ float ease(float x) {
 // const vec4 TRAIL_COLOR = vec4(1., 1., 0., 1.0); // yellow
 // const vec4 TRAIL_COLOR = vec4(0.4784, 0.6353, 0.9686, 1.0); // #7aa2f7
 // const vec4 TRAIL_COLOR = vec4(0.914, 0.702, 0.992, 1.0); // light cursor
-const vec4 TRAIL_COLOR = vec4(0.016, 0.82, 0.976, 1.0); // cyan
+vec4 TRAIL_COLOR = vec4(iCurrentCursorColor.rgb, iCurrentCursorColor.a);
 // const vec4 TRAIL_COLOR = vec4(0.216, 0.957, 0.6, 1.0); // green
 const float OPACITY = 0.6;
 const float DURATION = 0.10; //IN SECONDS

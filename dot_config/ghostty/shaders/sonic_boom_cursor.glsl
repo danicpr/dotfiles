@@ -2,7 +2,7 @@
 const float DURATION = 0.15;               // How long the ripple animates (seconds)
 const float MAX_RADIUS = 0.06;             // Max radius in normalized coords (0.5 = 1/4 screen height)
 const float ANIMATION_START_OFFSET = 0.0;        // Start the ripple slightly progressed (0.0 - 1.0)
-vec4 COLOR = vec4(0.35, 0.36, 0.44, 1.0); // change to iCurrentCursorColor for your cursor's color
+vec4 COLOR = vec4(iCurrentCursorColor.rgb, iCurrentCursorColor.a);
 const float CURSOR_WIDTH_CHANGE_THRESHOLD = 0.5; // Triggers ripple if cursor width changes by this fraction
 const float BLUR = 3.0;                    // Blur level in pixels
 
