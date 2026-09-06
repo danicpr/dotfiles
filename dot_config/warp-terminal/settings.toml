@@ -14,7 +14,7 @@ font_name = "JetBrainsMono Nerd Font"
 line_height_ratio = 1.100000023841858
 
 [appearance.window]
-zoom_level = 80
+zoom_level = 100
 
 [appearance.input]
 input_mode = "pinned_to_bottom"
@@ -108,3 +108,12 @@ crash_reporting_enabled = true
 
 [notifications]
 toast_duration_secs = 8
+
+[system]
+prefer_low_power_gpu = false
+force_x11 = false
+
+[session]
+
+[session.new_session_shell_override]
+executable = "/usr/bin/zsh"

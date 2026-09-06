@@ -1,3 +1,8 @@
+-- Startup
+hl.on("hyprland.start", function()
+	hl.exec_cmd("shelly-notifications")
+end)
+
 hl.config({
 	input = {
 		kb_layout = "us",
