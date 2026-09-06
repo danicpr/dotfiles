@@ -18,7 +18,7 @@
       "default_config_options": {
         "mode": "default",
         "thinking": "auto",
-        "model": "google-antigravity/gemini-3.7-flash-tiered",
+        "model": "google-antigravity/gemini-3.8-flash",
       },
       "type": "custom",
       "command": "omp",
