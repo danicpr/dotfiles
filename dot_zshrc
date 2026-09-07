@@ -29,28 +29,13 @@ alias sun='sudo tailscale up && sunshine'
 
 [[ -r "$HOME/.secrets/api_keys.zsh" ]] && source "$HOME/.secrets/api_keys.zsh"
 
-# Lazy-load SDKMAN
 export SDKMAN_DIR="$HOME/.sdkman"
-sdk() {
-    unset -f sdk java mvn gradle
-    [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-    sdk "$@"
-}
-java() { sdk; java "$@"; }
-mvn() { sdk; mvn "$@"; }
-gradle() { sdk; gradle "$@"; }
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# Lazy-load FNM (Node/npm)
 FNM_PATH="$HOME/.cargo/bin"
 if [[ -x "$FNM_PATH/fnm" ]]; then
   export PATH="$FNM_PATH:$PATH"
-  _load_fnm() {
-    unset -f node npm npx pnpm yarn _load_fnm
-    eval "$("$FNM_PATH/fnm" env)"
-  }
-  node() { _load_fnm; node "$@"; }
-  npm()  { _load_fnm; npm "$@"; }
-  npx()  { _load_fnm; npx "$@"; }
+  eval "$("$FNM_PATH/fnm" env)"
 fi
 
 # if [[ "$TERMINAL_EXE" == *"kitty"* ]] || [[ "$TERM" == "xterm-kitty" ]] || [[ "$TERM" == *"ghostty"* ]]; then
