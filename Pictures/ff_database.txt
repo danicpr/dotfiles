@@ -17,4 +17,4 @@ PR=5 PT=1
 linuxpat.gif
 PR=4
 apple_rainbow.png
-H=12 W=20 PR=3  PT=1
+H=12 W=22 PR=3  PT=1
