@@ -1,5 +1,5 @@
 // CONFIGURATION
-const float DURATION = 0.15;               // How long the ripple animates (seconds)
+const float DURATION = 0.08;               // How long the ripple animates (seconds) - snappy
 const float MAX_RADIUS = 0.06;             // Max radius in normalized coords (0.5 = 1/4 screen height)
 const float ANIMATION_START_OFFSET = 0.0;        // Start the ripple slightly progressed (0.0 - 1.0)
 vec4 COLOR = vec4(iCurrentCursorColor.rgb, iCurrentCursorColor.a);

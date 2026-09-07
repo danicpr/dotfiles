@@ -5,8 +5,6 @@ theme:
 setupVersion: 2
 debug:
   enabled: false
-inspect_image:
-  mode: "on"
 browser:
   enabled: false
 tools:
@@ -60,11 +58,11 @@ provider:
   appendOnlyContext: auto
 modelRoles:
   smol: deepseek/deepseek-v4-flash
-  vision: google-antigravity/gemini-3.7-flash
   tiny: deepseek/deepseek-v4-flash:off
-  slow: google-antigravity/gemini-3.7-flash
-  default: google-antigravity/gemini-3.7-flash
+  slow: google-antigravity/gemini-3.8-flash:auto
   plan: deepseek/deepseek-v4-flash
+  default: google-antigravity/gemini-3.8-flash
+  vision: google-antigravity/gemini-3.8-flash:auto
 github:
   cache:
     enabled: false
