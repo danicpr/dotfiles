@@ -1,4 +1,6 @@
 # Nautilus open any terminal
+window-inherit-working-directory = false
+working-directory = home
 gtk-single-instance = true
 linux-cgroup = never
 quit-after-last-window-closed = false

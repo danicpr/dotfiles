@@ -10,6 +10,10 @@ hl.config({
 		kb_variant = "altgr-intl",
 	},
 })
+-- hl.window_rule({
+-- 	match = { class = "com.mitchellh.ghostty" },
+-- 	no_blur = true,
+-- })
 
 hl.window_rule({
 	match = { class = "io.missioncenter.MissionCenter" },
