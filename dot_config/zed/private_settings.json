@@ -17,7 +17,7 @@
       },
       "default_config_options": {
         "mode": "default",
-        "thinking": "auto",
+        "thinking": "high",
         "model": "google-antigravity/gemini-3.8-flash",
       },
       "type": "custom",

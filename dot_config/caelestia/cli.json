@@ -1,4 +1,7 @@
 {
+  "wallpaper": {
+    "postHook": "vicinae theme set caelestia"
+  },
   "theme": {
     "iconTheme": "MacTahoe-dark"
   },
