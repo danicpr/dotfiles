@@ -62,7 +62,7 @@ keybind = ctrl+alt+e=equalize_splits
 # palette = 14=#7dcfff
 # palette = 15=#c0caf5
 
-background-opacity = 0.78
+background-opacity = 0.50
 # custom-shader = shaders/cursor_warp.glsl
 # custom-shader = shaders/sonic_boom_cursor.glsl
 custom-shader = shaders/cursor_smear.glsl

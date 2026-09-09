@@ -6,6 +6,12 @@
     "enabled": true,
   },
   "agent_servers": {
+    "antigravity-acp": {
+      "default_config_options": {
+        "model": "gemini-3.8-flash-high"
+      },
+      "type": "registry"
+    },
     "OMP": {
       "favorite_config_option_values": {
         "model": [
@@ -17,7 +23,7 @@
       },
       "default_config_options": {
         "mode": "default",
-        "thinking": "high",
+        "thinking": "auto",
         "model": "google-antigravity/gemini-3.8-flash",
       },
       "type": "custom",

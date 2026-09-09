@@ -57,12 +57,12 @@ providers:
 provider:
   appendOnlyContext: auto
 modelRoles:
-  smol: deepseek/deepseek-v4-flash
+  smol: openrouter/meta/muse-spark-1.3-contributor:auto
   tiny: deepseek/deepseek-v4-flash:off
-  slow: google-antigravity/gemini-3.8-flash:auto
+  slow: openrouter/meta/muse-spark-1.3-contributor:auto
   plan: deepseek/deepseek-v4-flash
-  default: google-antigravity/gemini-3.8-flash
-  vision: google-antigravity/gemini-3.8-flash:auto
+  default: openrouter/meta/muse-spark-1.3-contributor
+  vision: openrouter/meta/muse-spark-1.3-contributor:auto
 github:
   cache:
     enabled: false
