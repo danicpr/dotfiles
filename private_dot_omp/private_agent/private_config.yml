@@ -35,7 +35,7 @@ display:
   showTokenUsage: true
 task:
   showResolvedModelBadge: true
-  eager: default
+  eager: preferred
   maxEffort: xhigh
   enableEffort: true
 python:
@@ -54,6 +54,7 @@ providers:
   webSearchGeminiModel: gemini-3.7-flash
   imageOrder:
     - antigravity
+    - openrouter
 provider:
   appendOnlyContext: auto
 modelRoles:
@@ -67,14 +68,14 @@ github:
   cache:
     enabled: false
 temperature: 0.5
-disabledProviders:
-  - opencode-go
-  - opencode-zen
 startup:
   quiet: true
 read:
   renderMarkdown: true
 textVerbosity: medium
 composer:
-  shape: band
+  shape: pi
 hideThinkingBlock: true
+secrets:
+  enabled: true
+steeringMode: one-at-a-time
