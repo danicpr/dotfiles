@@ -86,7 +86,10 @@ local function apply(p, mode)
   vim.o.background = mode or "dark"
   vim.g.colors_name = "caelestia"
 
-  local transparent = vim.g.caelestia_transparent ~= true
+  -- FIX: antes era `~= true`, que invertía el flag documentado en lua/plugins:
+  -- con `vim.g.caelestia_transparent = false` seguía transparente.
+  -- Ahora: sin definir (o true) = transparente, false = fondo opaco.
+  local transparent = vim.g.caelestia_transparent ~= false
   local bg = transparent and "NONE" or p.surface
   local container_bg = transparent and "NONE" or p.surfaceContainer
   local container_low_bg = transparent and "NONE" or p.surfaceContainerLow
@@ -219,62 +222,33 @@ local function apply(p, mode)
 
   -- Common plugin groups (transparent-friendly)
   for _, g in ipairs({
-    "NeoTreeNormal",
-    "NeoTreeNormalNC",
-    "NeoTreeEndOfBuffer",
-    "TelescopeNormal",
-    "TelescopePromptNormal",
-    "TelescopeResultsNormal",
-    "TelescopePreviewNormal",
     "LazyNormal",
     "MasonNormal",
     "WhichKeyFloat",
     "WhichKeyNormal",
-    "SnacksDashboardNormal",
     "SnacksPickerNormal",
   }) do
     hl(g, { bg = container_bg })
   end
 
   for _, g in ipairs({
-    "TelescopeBorder",
-    "TelescopePromptBorder",
-    "TelescopeResultsBorder",
-    "TelescopePreviewBorder",
-    "NeoTreeFloatBorder",
     "SnacksPickerBorder",
   }) do
     hl(g, { fg = p.outline, bg = "NONE" })
   end
 
-  hl("TelescopeSelection", { bg = p.surfaceContainerHigh, bold = true })
-  hl("TelescopeMatching", { fg = p.primary, bold = true })
-  hl("TelescopePromptPrefix", { fg = p.primary })
-
-  -- Directory is used by neo-tree, oil, fzf-lua and the completion menus
+  -- Directory: lo usan el explorador de snacks, oil, fzf-lua y los menús
   hl("Directory", { fg = p.term4 })
-  hl("NeoTreeDirectoryName", { fg = p.term4 })
-  hl("NeoTreeDirectoryIcon", { fg = p.term4 })
-  hl("NeoTreeFileName", { fg = p.onSurface })
-  hl("NeoTreeFileNameOpened", { fg = p.primary, bold = true })
-  hl("NeoTreeRootName", { fg = p.primary, bold = true, italic = true })
-  hl("NeoTreeSymbolicLinkTarget", { fg = p.term6 })
-  hl("NeoTreeDotfile", { fg = p.outline })
-  hl("NeoTreeHiddenByName", { fg = p.outline })
-  hl("NeoTreeIndentMarker", { fg = p.outlineVariant })
-  hl("NeoTreeExpander", { fg = p.outline })
-  hl("NeoTreeModified", { fg = p.term3 })
-  hl("NeoTreeGitModified", { fg = p.term3 })
-  hl("NeoTreeGitAdded", { fg = p.term2 })
-  hl("NeoTreeGitDeleted", { fg = p.term1 })
-  hl("NeoTreeGitUntracked", { fg = p.term2, italic = true })
-  hl("NeoTreeGitIgnored", { fg = p.outline })
-  hl("NeoTreeGitConflict", { fg = p.error, bold = true })
-  hl("NeoTreeGitStaged", { fg = p.term2 })
-  hl("NeoTreeGitUnstaged", { fg = p.term1 })
+  -- gitsigns: los signos "staged" son grupos aparte, sin definir saldrían sin
+  -- color. Mismo tono que los normales; la posición ya los distingue.
   hl("GitSignsAdd", { fg = p.term2 })
   hl("GitSignsChange", { fg = p.term3 })
   hl("GitSignsDelete", { fg = p.term1 })
+  hl("GitSignsStagedAdd", { fg = p.term2 })
+  hl("GitSignsStagedChange", { fg = p.term3 })
+  hl("GitSignsStagedDelete", { fg = p.term1 })
+  hl("GitSignsStagedTopdelete", { fg = p.term1 })
+  hl("GitSignsStagedChangedelete", { fg = p.term3 })
 
   -- mini.icons sets these with default = true on ColorScheme, which usually
   -- fires before it lazy loads, so set them here instead
@@ -287,6 +261,11 @@ local function apply(p, mode)
   hl("MiniIconsPurple", { fg = p.term5 })
   hl("MiniIconsRed", { fg = p.error })
   hl("MiniIconsYellow", { fg = p.term3 })
+
+  -- La paleta queda disponible para quien se construya sus propios grupos
+  -- (lualine, ver lua/plugins/ui.lua). Se refresca en cada ColorScheme.
+  vim.g.caelestia_palette = p
+  vim.g.caelestia_transparent_bg = transparent
 end
 
 -- Watch the directory, not the file: caelestia writes scheme.json by atomic
