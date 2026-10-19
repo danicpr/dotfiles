@@ -4,6 +4,70 @@
             "enabled": true
         }
     },
+    "bar": {
+        "activeWindow": {
+            "compact": true,
+            "inverted": false,
+            "showOnHover": false
+        },
+        "popouts": {
+            "activeWindow": false,
+            "tray": true
+        },
+        "scrollActions": {
+            "brightness": false,
+            "workspaces": true
+        },
+        "statusIcons": [
+            {
+                "enabled": true,
+                "id": "lockStatus"
+            },
+            {
+                "enabled": false,
+                "id": "audio"
+            },
+            {
+                "enabled": true,
+                "id": "microphone"
+            },
+            {
+                "enabled": false,
+                "id": "kbLayout"
+            },
+            {
+                "enabled": true,
+                "id": "network"
+            },
+            {
+                "enabled": true,
+                "id": "bluetooth"
+            },
+            {
+                "enabled": true,
+                "id": "battery"
+            }
+        ],
+        "tray": {
+            "background": false,
+            "compact": false,
+            "recolour": false
+        },
+        "workspaces": {
+            "activeIndicator": true,
+            "activeTrail": true,
+            "maxWindowIcons": 5,
+            "occupiedBg": false,
+            "perMonitor": true,
+            "showUnoccupied": true,
+            "showWindows": true,
+            "showWindowsOnSpecialWorkspaces": true,
+            "shown": 5
+        }
+    },
+    "dashboard": {
+        "showClockSeconds": false
+    },
     "general": {
         "apps": {
             "playback": [
@@ -13,16 +77,113 @@
                 "/usr/bin/ghostty",
                 "--gtk-single-instance=true"
             ]
+        },
+        "idle": {
+            "inhibitWhenAudio": true,
+            "inhibitWhenCharging": false,
+            "lockBeforeSleep": true,
+            "timeouts": [
+                {
+                    "enabled": true,
+                    "idleAction": "lock",
+                    "inhibitWhenAudio": false,
+                    "inhibitWhenCharging": false,
+                    "respectInhibitors": true,
+                    "timeout": 420
+                },
+                {
+                    "enabled": true,
+                    "idleAction": "dpms off",
+                    "inhibitWhenAudio": false,
+                    "inhibitWhenCharging": false,
+                    "respectInhibitors": true,
+                    "returnAction": "dpms on",
+                    "timeout": 600
+                },
+                {
+                    "enabled": true,
+                    "idleAction": [
+                        "suspendThenHibernate"
+                    ],
+                    "inhibitWhenAudio": false,
+                    "inhibitWhenCharging": false,
+                    "respectInhibitors": true,
+                    "timeout": 900
+                }
+            ]
         }
     },
     "launcher": {
+        "dragThreshold": 50,
         "hiddenApps": [
-            "bssh",
             "bvnc",
             "avahi-discover",
             "btop",
             "thunar-bulk-rename",
-            "thunar-settings"
-        ]
+            "thunar-settings",
+            "xfce4-about",
+            "bssh",
+            "lstopo",
+            "hplip",
+            "hp-uiscan",
+            "nvtop",
+            "com.saivert.pwvucontrol",
+            "qv4l2",
+            "qvidcap",
+            "org.cachyos.scx-manager"
+        ],
+        "maxShown": 7,
+        "showOnHover": false,
+        "useFuzzy": {
+            "apps": true
+        },
+        "vimKeybinds": true
+    },
+    "osd": {
+        "enableBrightness": false,
+        "enableMicrophone": true,
+        "enabled": true
+    },
+    "sidebar": {
+        "enabled": true
+    },
+    "utilities": {
+        "enabled": true,
+        "maxToasts": 4,
+        "quickToggles": [
+            {
+                "enabled": true,
+                "id": "wifi"
+            },
+            {
+                "enabled": true,
+                "id": "bluetooth"
+            },
+            {
+                "enabled": true,
+                "id": "mic"
+            },
+            {
+                "enabled": true,
+                "id": "settings"
+            },
+            {
+                "enabled": true,
+                "id": "gameMode"
+            },
+            {
+                "enabled": true,
+                "id": "dnd"
+            },
+            {
+                "enabled": false,
+                "id": "vpn"
+            }
+        ],
+        "toasts": {
+            "audioInputChanged": true,
+            "audioOutputChanged": true,
+            "numLockChanged": false
+        }
     }
 }

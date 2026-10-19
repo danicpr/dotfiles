@@ -1,4 +1,10 @@
-export TERMINAL=ghostty
+export TERMINAL='ghostty'
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.bun/bin:$PATH"
+
+[[ -r "$HOME/.secrets/api_keys.zsh" ]] && source "$HOME/.secrets/api_keys.zsh"
+
+if [[ -x "$HOME/.cargo/bin/fnm" ]]; then
+  eval "$("$HOME/.cargo/bin/fnm" env)"
+fi

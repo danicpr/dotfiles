@@ -3,7 +3,9 @@
     "postHook": "vicinae theme set caelestia"
   },
   "theme": {
-    "iconTheme": "MacTahoe-dark"
+    "iconTheme": "MacTahoe-dark",
+    "iconThemeLight": "MacTahoe-Light",
+    "iconThemeDark": "MacTahoe-dark"
   },
   "toggles": {
     "sysmon": {
@@ -13,8 +15,11 @@
       "missioncenter": {
         "enable": true,
         "match": [
-          { "class": "io.missioncenter.MissionCenter" },
-          { "class": "missioncenter" }
+          {
+            "class": "io.missioncenter.MissionCenter",
+            "title": "missioncenter",
+            "workspace": { "name": "special:sysmon" }
+          }
         ],
         "command": ["missioncenter"],
         "move": true

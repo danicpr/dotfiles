@@ -1,9 +1,9 @@
 # Nautilus open any terminal
 window-inherit-working-directory = false
 working-directory = home
-gtk-single-instance = true
+gtk-single-instance = detect
 linux-cgroup = never
-quit-after-last-window-closed = false
+quit-after-last-window-closed = true
 # Font
 font-family = Jetbrains Mono Nerd Font
 font-style = Light

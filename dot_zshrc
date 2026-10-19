@@ -27,8 +27,6 @@ alias sun='sudo tailscale up && sunshine'
 #     clear && command omp "$@"
 # }
 
-[[ -r "$HOME/.secrets/api_keys.zsh" ]] && source "$HOME/.secrets/api_keys.zsh"
-
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
@@ -47,3 +45,6 @@ fi
 
 # Added by Antigravity CLI installer
 export PATH="/home/dev/.local/bin:$PATH"
+# >>> deepseek-harness dsh >>>
+export PATH="$HOME/.local/bin:$PATH"
+# <<< deepseek-harness dsh <<<

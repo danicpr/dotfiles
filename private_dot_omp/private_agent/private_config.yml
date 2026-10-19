@@ -22,6 +22,15 @@ includeModelInPrompt: true
 personality: none
 retry:
   modelFallback: false
+  fallbackChains:
+    image:
+      - openrouter/google/gemini-3-pro-image
+      - openai/gpt-image-2
+      - openai-codex/gpt-image-2
+      - xai/grok-imagine-image
+      - xai-oauth/grok-imagine-image
+      - google/gemini-3-pro-image
+      - deepinfra/black-forest-labs/FLUX-2-pro
 statusLine:
   separator: slash
   preset: default
@@ -38,6 +47,14 @@ task:
   eager: preferred
   maxEffort: xhigh
   enableEffort: true
+  agentModelOverrides:
+    reviewer: vertex-global/gemini-4-argon
+    scout: vertex-global/gemini-3.8-flash
+    seance: vertex-global/gemini-3.8-flash
+    sonic: vertex-global/gemini-3.8-flash
+    task: vertex-global/gemini-3.8-flash
+    security-reviewer: vertex-global/gemini-4-argon
+  disabledAgents: []
 python:
   kernelMode: session
 plan:
@@ -48,22 +65,19 @@ commands:
   enableOpencodeUser: false
   enableOpencodeProject: false
 providers:
-  tinyModel: lfm2-700m
   tinyModelDevice: gpu
   openrouterVariant: floor
-  webSearchGeminiModel: gemini-3.7-flash
-  imageOrder:
-    - antigravity
-    - openrouter
 provider:
   appendOnlyContext: auto
 modelRoles:
-  smol: openrouter/meta/muse-spark-1.3-contributor:auto
-  tiny: deepseek/deepseek-v4-flash:off
+  smol: vertex-global/gemini-3.8-flash:auto
+  tiny: "local/lfm2.5-350m,deepseek/deepseek-v4-flash:off"
   slow: openrouter/meta/muse-spark-1.3-contributor:auto
-  plan: deepseek/deepseek-v4-flash
-  default: openrouter/meta/muse-spark-1.3-contributor
+  plan: vertex-global/gemini-4-argon:medium
   vision: openrouter/meta/muse-spark-1.3-contributor:auto
+  image: google-antigravity/gemini-3-pro-image
+  default: vertex-global/gemini-3.8-flash:high
+  advisor: vertex-global/gemini-4-argon:medium
 github:
   cache:
     enabled: false
