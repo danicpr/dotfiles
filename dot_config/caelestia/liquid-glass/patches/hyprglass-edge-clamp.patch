@@ -1,0 +1,50 @@
+diff --git a/src/GlassRenderer.cpp b/src/GlassRenderer.cpp
+index 250cfa5..594523b 100644
+--- a/src/GlassRenderer.cpp
++++ b/src/GlassRenderer.cpp
+@@ -179,17 +179,23 @@ void sampleBackground(SP<Render::IFramebuffer>& sampleFramebuffer, SP<Render::IF
+     // doesn't cover the whole FBO. Clamped regions (near monitor edges)
+     // would otherwise leave uninitialized GPU memory (pink artifacts) outside
+     // the blit; a full-rect blit overwrites every texel, so the clear is redundant.
+-    if (destinationClamped) {
+-        glBindFramebuffer(GL_FRAMEBUFFER, fbId(sampleFramebuffer));
+-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+-        glClear(GL_COLOR_BUFFER_BIT);
+-    }
+-
+     glBindFramebuffer(GL_READ_FRAMEBUFFER, fbId(sourceFramebuffer));
+     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, fbId(sampleFramebuffer));
+     glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1,
+                       dstX0, dstY0, dstX1, dstY1,
+                       GL_COLOR_BUFFER_BIT, GL_LINEAR);
++
++    if (destinationClamped && dstX1 > dstX0 && dstY1 > dstY0) {
++        glBindFramebuffer(GL_READ_FRAMEBUFFER, fbId(sampleFramebuffer));
++        if (dstX0 > 0)
++            glBlitFramebuffer(dstX0, dstY0, dstX0 + 1, dstY1, 0, dstY0, dstX0, dstY1, GL_COLOR_BUFFER_BIT, GL_NEAREST);
++        if (dstX1 < sampleWidth)
++            glBlitFramebuffer(dstX1 - 1, dstY0, dstX1, dstY1, dstX1, dstY0, sampleWidth, dstY1, GL_COLOR_BUFFER_BIT, GL_NEAREST);
++        if (dstY0 > 0)
++            glBlitFramebuffer(0, dstY0, sampleWidth, dstY0 + 1, 0, 0, sampleWidth, dstY0, GL_COLOR_BUFFER_BIT, GL_NEAREST);
++        if (dstY1 < sampleHeight)
++            glBlitFramebuffer(0, dstY1 - 1, sampleWidth, dstY1, 0, dstY1, sampleWidth, sampleHeight, GL_COLOR_BUFFER_BIT, GL_NEAREST);
++    }
+ }
+ 
+ void blendOwnContent(SP<Render::IFramebuffer>& sampleFramebuffer, PHLWINDOW window, PHLMONITOR monitor,
+diff --git a/src/Shaders.hpp b/src/Shaders.hpp
+index 5f4a0ab..70b160a 100644
+--- a/src/Shaders.hpp
++++ b/src/Shaders.hpp
+@@ -893,9 +893,8 @@ layout(location = 0) out vec4 fragColor;
+ const float FAR = 16384.0;
+ 
+ vec2 known(vec2 p) {
+-    if (p.x < 0.0 || p.y < 0.0 || p.x >= fieldSize.x || p.y >= fieldSize.y)
+-        return vec2(0.0, FAR);
+-    return texelFetch(tex, ivec2(p), 0).rg;
++    ivec2 cp = clamp(ivec2(p), ivec2(0), ivec2(fieldSize) - 1);
++    return texelFetch(tex, cp, 0).rg;
+ }
+ 
+ void main() {

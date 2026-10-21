@@ -1,8 +1,16 @@
 {
     "appearance": {
+        "deformScale": 1.25,
         "transparency": {
-            "enabled": true
+            "enabled": true,
+            "base": 0.36,
+            "layers": 0.22
         }
+    },
+    "border": {
+        "thickness": 10,
+        "rounding": 28,
+        "smoothing": 28
     },
     "bar": {
         "activeWindow": {

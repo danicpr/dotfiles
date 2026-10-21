@@ -1,0 +1,67 @@
+diff --git a/plugin/src/Caelestia/Blobs/shaders/blob.frag b/plugin/src/Caelestia/Blobs/shaders/blob.frag
+index 138928fa..84b7f67d 100644
+--- a/plugin/src/Caelestia/Blobs/shaders/blob.frag
++++ b/plugin/src/Caelestia/Blobs/shaders/blob.frag
+@@ -263,7 +263,60 @@ void main() {
+     if (owner != myIndex && mergedSdf > smoothFactor)
+         discard;
+ 
+-    float fw = fwidth(mergedSdf);
++    float fw = max(fwidth(mergedSdf), 0.5);
+     float alpha = 1.0 - smoothstep(-fw, fw, mergedSdf);
+-    fragColor = vec4(color.rgb * alpha, alpha) * qt_Opacity;
++    if (alpha <= 0.001)
++        discard;
++
++    // Exact signed inward distance from the true exterior contour (mergedSdf == 0)
++    float depth = max(0.0, -mergedSdf);
++
++    // Suppress rim lighting along the outer monitor edges (invertedOuter boundary)
++    float outerEdgeMask = 1.0;
++    if (hasInverted != 0) {
++        float dOutEdge = min(
++            min(abs(pixel.x - (invertedOuter.x - invertedOuter.z)),
++                abs(pixel.x - (invertedOuter.x + invertedOuter.z))),
++            min(abs(pixel.y - (invertedOuter.y - invertedOuter.w)),
++                abs(pixel.y - (invertedOuter.y + invertedOuter.w)))
++        );
++        outerEdgeMask = smoothstep(1.5, 6.0, dOutEdge);
++    }
++
++    // Compact-support optical bevel strictly within 0..4.5px of the inner contour
++    float rimLine = smoothstep(2.0, 0.3, depth);
++    float bevelBand = smoothstep(4.5, 0.0, depth);
++    float causticTrough = smoothstep(1.5, 3.2, depth) * smoothstep(5.8, 3.2, depth);
++
++    vec2 sdfGrad = vec2(dFdx(mergedSdf), dFdy(mergedSdf));
++    float gradLen = length(sdfGrad);
++    float validEdge = smoothstep(0.35, 0.75, gradLen) * outerEdgeMask;
++    vec2 normal2D = (gradLen > 0.0001) ? (sdfGrad / gradLen) : vec2(0.0, -1.0);
++
++    // Directional lighting: primary top-left specular + bottom-right Fresnel counter-rim
++    vec2 lightMain = vec2(-0.5547, -0.83205);
++    vec2 lightBounce = vec2(0.5547, 0.83205);
++    float ndotlMain = max(0.0, dot(normal2D, lightMain));
++    float ndotlBounce = max(0.0, dot(normal2D, lightBounce));
++
++    float specRim = validEdge * (
++        rimLine * (0.28 + 0.42 * pow(ndotlMain, 1.15) + 0.24 * pow(ndotlBounce, 1.6))
++        + bevelBand * (0.05 + 0.14 * pow(ndotlMain, 1.3) + 0.05 * pow(ndotlBounce, 1.8))
++    );
++
++    // Subtle chromatic dispersion on the crystal rim
++    vec3 dispersion = vec3(
++        0.95 + 0.08 * normal2D.x - 0.05 * normal2D.y,
++        0.99 - 0.01 * abs(normal2D.x),
++        1.06 - 0.08 * normal2D.x + 0.06 * normal2D.y
++    );
++
++    vec3 baseRgb = color.rgb * (1.0 - 0.22 * causticTrough * validEdge);
++    vec3 highlightColor = clamp(mix(color.rgb + vec3(0.85), vec3(0.98, 0.995, 1.0), 0.84) * dispersion, 0.0, 1.0);
++    vec3 glassRgb = mix(baseRgb, highlightColor, clamp(specRim, 0.0, 0.92));
++
++    // Output alpha MUST be 1.0 * alpha inside the blob so overlapping blob meshes
++    // inside the offscreen FBO do not double-blend! Transparency is applied uniformly
++    // by the parent blobLayer FBO (opacity: root.surfaceColour.a).
++    fragColor = vec4(glassRgb * alpha, alpha) * qt_Opacity;
+ }
